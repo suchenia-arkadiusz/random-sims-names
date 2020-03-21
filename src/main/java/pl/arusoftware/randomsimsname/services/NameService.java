@@ -25,23 +25,24 @@ public class NameService {
         nameDAO.save(entry);
     }
 
-    public void setIsUsedStatus(String name, boolean isUsed) {
+    public void setIsUsedStatus(String name, boolean isUsed) throws NameNotFoundException {
         try {
             Name entry = nameDAO.getName(name);
             Name newEntry = new Name(entry.getId(), entry.getGender(), isUsed);
             nameDAO.update(newEntry);
         } catch (NameNotFoundException e) {
             LOGGER.error("Exception during set is used status: " + e.getMessage());
+            throw e;
         }
     }
 
-    public Name getName(String name) {
+    public Name getName(String name) throws NameNotFoundException {
         try {
             return nameDAO.getName(name);
         } catch (NameNotFoundException e) {
             LOGGER.error("Exception during get name: " + e.getMessage());
+            throw e;
         }
-        return Name.createEmptyName();
     }
 
     public Set<Name> getAllNames() {
