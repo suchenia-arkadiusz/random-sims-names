@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "TABLES")
 public class Name {
     @Id
-    private String name;
+    private String id;
 
     private Gender gender;
 
@@ -16,8 +16,8 @@ public class Name {
 
     public Name() {}
 
-    public Name(String name, Gender gender, Boolean isUsed) {
-        this.name = name;
+    public Name(String id, Gender gender, Boolean isUsed) {
+        this.id = id;
         this.gender = gender;
         this.isUsed = isUsed;
     }
@@ -30,8 +30,8 @@ public class Name {
         return gender;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     public enum Gender {
