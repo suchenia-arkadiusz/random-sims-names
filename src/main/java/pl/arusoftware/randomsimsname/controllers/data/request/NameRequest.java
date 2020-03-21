@@ -23,11 +23,11 @@ public class NameRequest {
         this.gender = gender;
     }
 
-    public boolean isUsed() {
+    public boolean getIsUsed() {
         return isUsed;
     }
 
-    public void setUsed(boolean used) {
-        isUsed = used;
+    public void setIsUsed(boolean isUsed) {
+        this.isUsed = isUsed;
     }
 }

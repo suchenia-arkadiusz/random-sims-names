@@ -5,7 +5,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +17,7 @@ import pl.arusoftware.randomsimsname.data.entities.Name;
 import pl.arusoftware.randomsimsname.data.exceptions.NameNotFoundException;
 import pl.arusoftware.randomsimsname.services.NameService;
 
+import javax.websocket.server.PathParam;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -48,7 +48,7 @@ public class NameRESTController {
     @ResponseBody
     public ResponseEntity<String> setIsUsedStatus(@RequestBody NameRequest request) {
         try {
-            nameService.setIsUsedStatus(request.getName(), request.isUsed());
+            nameService.setIsUsedStatus(request.getName(), request.getIsUsed());
             return ResponseEntity
                     .ok("Changed name's status");
         } catch (NameNotFoundException e) {
@@ -60,7 +60,7 @@ public class NameRESTController {
 
     @GetMapping("/name")
     @ResponseBody
-    public ResponseEntity<?> getName(@PathVariable String name) {
+    public ResponseEntity<?> getName(@PathParam("name") String name) {
         try {
             Name entry = nameService.getName(name);
             NameResponse response = mapNameToResponse(entry);
@@ -92,7 +92,7 @@ public class NameRESTController {
 
     @DeleteMapping("/name")
     @ResponseBody
-    public ResponseEntity<String> deleteName(@PathVariable String name) {
+    public ResponseEntity<String> deleteName(@PathParam("name") String name) {
         try {
             nameService.deleteName(name);
             return ResponseEntity
