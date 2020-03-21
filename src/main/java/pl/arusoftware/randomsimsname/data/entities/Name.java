@@ -14,6 +14,10 @@ public class Name {
 
     private Boolean isUsed;
 
+    public static Name createEmptyName() {
+        return new Name("Empty name", Gender.MALE, false);
+    }
+
     public Name() {}
 
     public Name(String id, Gender gender, Boolean isUsed) {
