@@ -49,8 +49,13 @@ public class NameService {
         return nameDAO.getAllNames();
     }
 
-    public void deleteName(String name) {
-        nameDAO.delete(name);
+    public void deleteName(String name) throws NameNotFoundException {
+        try {
+            nameDAO.delete(name);
+        } catch (Exception e) {
+            LOGGER.error("Error during delete name: " + e.getMessage());
+            throw new NameNotFoundException("Name \"" + name + "\" not found");
+        }
     }
 
     public void deleteName(Name name) {
