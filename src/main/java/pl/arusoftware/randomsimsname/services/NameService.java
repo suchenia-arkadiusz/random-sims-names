@@ -25,31 +25,37 @@ public class NameService {
         nameDAO.save(entry);
     }
 
-    public void setIsUsedStatus(String name, boolean isUsed) {
+    public void setIsUsedStatus(String name, boolean isUsed) throws NameNotFoundException {
         try {
             Name entry = nameDAO.getName(name);
             Name newEntry = new Name(entry.getId(), entry.getGender(), isUsed);
             nameDAO.update(newEntry);
         } catch (NameNotFoundException e) {
             LOGGER.error("Exception during set is used status: " + e.getMessage());
+            throw e;
         }
     }
 
-    public Name getName(String name) {
+    public Name getName(String name) throws NameNotFoundException {
         try {
             return nameDAO.getName(name);
         } catch (NameNotFoundException e) {
             LOGGER.error("Exception during get name: " + e.getMessage());
+            throw e;
         }
-        return Name.createEmptyName();
     }
 
     public Set<Name> getAllNames() {
         return nameDAO.getAllNames();
     }
 
-    public void deleteName(String name) {
-        nameDAO.delete(name);
+    public void deleteName(String name) throws NameNotFoundException {
+        try {
+            nameDAO.delete(name);
+        } catch (Exception e) {
+            LOGGER.error("Error during delete name: " + e.getMessage());
+            throw new NameNotFoundException("Name \"" + name + "\" not found");
+        }
     }
 
     public void deleteName(Name name) {
