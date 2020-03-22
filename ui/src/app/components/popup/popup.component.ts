@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PopupService } from "../../services/popup.service";
 
 @Component({
   selector: 'app-popup',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
+  @Input() isPopupVisible: boolean;
 
-  constructor() { }
+  constructor(private popupService: PopupService) { }
 
   ngOnInit(): void {
   }
 
+  showPopup() {
+    this.isPopupVisible = true;
+  }
+
+  closePopup() {
+    this.isPopupVisible = false;
+  }
 }
