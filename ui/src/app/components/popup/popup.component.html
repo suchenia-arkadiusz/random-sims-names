@@ -1,5 +1,11 @@
 <div class="popup-overlay" *ngIf="isPopupVisible">
   <div class="popup-container">
+    <div *ngIf="isAddNameSelected">
     Jakiś tam text
+    </div>
+    <div *ngIf="!isAddNameSelected">
+      O nie, co się stało? :O
+    </div>
+    <button class="btn btn-primary" (click)="closePopup()">Close popup</button>
   </div>
 </div>

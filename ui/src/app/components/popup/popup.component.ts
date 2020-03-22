@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PopupService } from "../../services/popup.service";
 
 @Component({
@@ -7,18 +7,19 @@ import { PopupService } from "../../services/popup.service";
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
-  @Input() isPopupVisible: boolean;
+  isPopupVisible: boolean;
+  isAddNameSelected: boolean;
 
   constructor(private popupService: PopupService) { }
 
   ngOnInit(): void {
-  }
-
-  showPopup() {
-    this.isPopupVisible = true;
+    this.popupService.isPopupVisible()
+      .subscribe(value => this.isPopupVisible = value);
+    this.popupService.isAddNewSelected()
+      .subscribe(value => this.isAddNameSelected = value);
   }
 
   closePopup() {
-    this.isPopupVisible = false;
+    this.popupService.closePopup();
   }
 }

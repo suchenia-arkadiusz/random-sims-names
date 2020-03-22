@@ -6,13 +6,16 @@ import { BehaviorSubject, Observable } from "rxjs";
 })
 export class PopupService {
   private isVisible: BehaviorSubject<boolean>;
+  private isAddNew: BehaviorSubject<boolean>;
 
   constructor() {
     this.isVisible = new BehaviorSubject<boolean>(false);
+    this.isAddNew = new BehaviorSubject<boolean>(true);
   }
 
-  openPopup() {
+  openPopup(popupName) {
     this.isVisible.next(true);
+    this.isAddNew.next(popupName === 'add-name');
   }
 
   closePopup() {
@@ -21,5 +24,9 @@ export class PopupService {
 
   isPopupVisible(): Observable<boolean> {
     return this.isVisible.asObservable();
+  }
+
+  isAddNewSelected(): Observable<boolean> {
+    return this.isAddNew.asObservable();
   }
 }
