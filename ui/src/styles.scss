@@ -4,6 +4,7 @@
   --light-green: #a1c908;
   --dark-green: #02963e;
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -11,3 +12,7 @@
   font-size: 14pt;
 }
 
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #73d3ff !important;
+  color: black !important;
+}
