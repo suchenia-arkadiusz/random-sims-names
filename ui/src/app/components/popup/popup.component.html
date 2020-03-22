@@ -1,11 +1,17 @@
 <div class="popup-overlay" *ngIf="isPopupVisible">
   <div class="popup-container">
-    <div *ngIf="isAddNameSelected">
-    Jakiś tam text
+    <div class="aru-close-popup row">
+      <button class="btn" (click)="closePopup()">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
     </div>
-    <div *ngIf="!isAddNameSelected">
-      O nie, co się stało? :O
+    <div class="row">
+      <div *ngIf="isAddNameSelected">
+        Jakiś tam text
+      </div>
+      <div *ngIf="!isAddNameSelected">
+        O nie, co się stało? :O
+      </div>
     </div>
-    <button class="btn btn-primary" (click)="closePopup()">Close popup</button>
   </div>
 </div>
