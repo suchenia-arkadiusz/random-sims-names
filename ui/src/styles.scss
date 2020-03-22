@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  --light-green: #a1c908;
-  --dark-green: #02963e;
+  --aru-light-green: #a1c908;
+  --aru-dark-green: #02963e;
+  --aru-blue: #73d3ff;
+  --aru-light-blue: #f2faff;
+  --aru-red: #ff6973;
 }
 
 * {
@@ -13,6 +16,6 @@
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-  background-color: #73d3ff !important;
+  background-color: var(--aru-blue) !important;
   color: black !important;
 }
