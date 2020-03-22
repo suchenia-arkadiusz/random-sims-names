@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { IonicModule } from '@ionic/angular';
+import { AddNewNameComponent } from './components/add-new-name/add-new-name.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { IonicModule } from '@ionic/angular';
     HomePageComponent,
     HeaderComponent,
     FooterComponent,
-    PopupComponent
+    PopupComponent,
+    AddNewNameComponent
   ],
   imports: [
     BrowserModule,

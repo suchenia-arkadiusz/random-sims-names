@@ -1,1 +1,15 @@
-<p>add-new-name works!</p>
+<h1>Dodaj nowe imię</h1>
+<div class="add-new-name-row row">
+  <label for="name">Imię: </label>
+  <input #nameInput id="name" type="text" />
+</div>
+<div class="add-new-name-row row">
+  <label for="gender">Płeć: </label>
+  <select id="gender" (change)="selectGender($event.target.value)">
+    <option value="MALE">Mężczyzna</option>
+    <option value="FEMALE">Kobieta</option>
+  </select>
+</div>
+<div class="add-new-name-row row">
+  <button class="btn btn-success" (click)="addNem()">Dodaj imię</button>
+</div>
