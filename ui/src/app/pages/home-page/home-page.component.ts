@@ -14,10 +14,11 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.names = this.nameService.getNames();
+    this.nameService.getNames()
+      .subscribe((data: Name[]) => this.names = data);
   }
 
   deleteName(index: number) {
-    this.nameService.deleteName(index);
+    this.nameService.deleteName(this.names[index]);
   }
 }
