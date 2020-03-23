@@ -22,4 +22,9 @@ export class NameService {
       this.names.splice(index, 1);
     }
   }
+
+  setNameAsTaken(name: Name) {
+    let index = this.names.indexOf(name);
+    this.names[index].isUsed = true;
+  }
 }
