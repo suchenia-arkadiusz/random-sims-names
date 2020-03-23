@@ -25,10 +25,12 @@ export class DrawNameComponent implements OnInit {
   }
 
   drawName() {
-    let names = this.nameService.getNames();
-    let index = Math.floor(Math.random() * names.length);
-    this.drawnName = names[index];
-    this.name = this.drawnName.name;
-    this.gender = this.drawnName.gender === 'MALE' ? 'Mężczyzna' : 'Kobieta';
+    this.nameService.getNames()
+      .subscribe((data: Name[]) => {
+        let index = Math.floor(Math.random() * data.length);
+        this.drawnName = data[index];
+        this.name = this.drawnName.name;
+        this.gender = this.drawnName.gender === 'MALE' ? 'Mężczyzna' : 'Kobieta';
+      });
   }
 }
