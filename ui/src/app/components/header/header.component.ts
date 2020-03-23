@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopupService } from "../../services/popup.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private popupService: PopupService) { }
 
   ngOnInit(): void {
+  }
+
+  showPopup(popupName: string) {
+    this.popupService.openPopup(popupName);
   }
 
 }

@@ -1,0 +1,22 @@
+.header-container {
+  background: linear-gradient(180deg, var(--aru-light-green) 0%, var(--aru-dark-green) 100%);
+  width: 100%;
+  height: 100px;
+  line-height: 90px;
+  vertical-align: center;
+}
+
+.nav-button {
+  margin-right: 20px;
+}
+
+.nav-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.nav-label{
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -1,0 +1,30 @@
+.home-page-container {
+  padding-bottom: 20px;
+}
+
+.aru-table {
+  border-collapse: collapse;
+}
+
+.aru-table-header {
+  border-bottom: 1px solid #dddddd;
+  min-width: 200px;
+  padding: 5px;
+  background: var(--aru-blue);
+  text-align: center;
+}
+
+.aru-table-cell {
+  padding: 2px;
+  border-bottom: 1px solid #dddddd;
+  text-align: center;
+  vertical-align: center;
+}
+
+.aru-delete-icon {
+  color: var(--aru-red);
+}
+
+.aru-table-row:hover {
+  background-color: var(--aru-light-blue);
+}

@@ -1,1 +1,12 @@
-<p>header works!</p>
+<div class="header-container">
+  <div class="container-fluid">
+    <button class="nav-button btn btn-primary" (click)="showPopup('add-name')">
+      <ion-icon class="nav-icon" name="add-outline"></ion-icon>
+      <span class="nav-label">Dodaj imię</span>
+    </button>
+    <button class="nav-button btn btn-primary" (click)="showPopup('draw-name')">
+      <ion-icon class="nav-icon" name="shuffle-outline"></ion-icon>
+      <span class="nav-label">Losuj</span>
+    </button>
+  </div>
+</div>
