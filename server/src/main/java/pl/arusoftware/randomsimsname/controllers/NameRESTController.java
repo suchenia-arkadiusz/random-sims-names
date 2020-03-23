@@ -1,8 +1,11 @@
 package pl.arusoftware.randomsimsname.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +24,12 @@ import javax.websocket.server.PathParam;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v1", produces = MediaType.APPLICATION_JSON_VALUE)
 public class NameRESTController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NameRESTController.class);
+
     private NameService nameService;
 
     public NameRESTController(NameService nameService) {
@@ -108,7 +114,7 @@ public class NameRESTController {
         NameResponse response = new NameResponse();
         response.setName(entry.getId());
         response.setGender(entry.getGender().toString());
-        response.setUsed(entry.getUsed());
+        response.setIsUsed(entry.getUsed());
         return response;
     }
 }
