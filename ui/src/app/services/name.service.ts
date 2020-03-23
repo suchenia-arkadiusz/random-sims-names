@@ -10,11 +10,16 @@ export class NameService {
   constructor() { }
 
   addNewName(name: Name) {
-    console.log(name);
     this.names.push(name);
   }
 
   getNames(): Name[] {
     return this.names;
+  }
+
+  deleteName(index: number) {
+    if (index > -1) {
+      this.names.splice(index, 1);
+    }
   }
 }
