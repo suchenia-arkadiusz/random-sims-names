@@ -10,9 +10,14 @@ import { NameService } from "../../services/name.service";
 export class HomePageComponent implements OnInit {
   names: Name[] = [];
 
-  constructor(private nameService: NameService) { }
+  constructor(private nameService: NameService) {
+  }
 
   ngOnInit(): void {
     this.names = this.nameService.getNames();
+  }
+
+  deleteName(index: number) {
+    this.nameService.deleteName(index);
   }
 }

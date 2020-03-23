@@ -10,7 +10,7 @@
         <th class="aru-table-header">W użyciu</th>
         <th class="aru-table-header">Skasuj</th>
       </tr>
-      <tr class="aru-table-row" *ngFor="let name of names">
+      <tr class="aru-table-row" *ngFor="let name of names; let nameIndex = index">
         <td class="aru-table-cell">{{name.name}}</td>
         <td class="aru-table-cell">
           <ion-icon name="man-outline" *ngIf="name.gender === 'MALE'"></ion-icon>
@@ -20,7 +20,9 @@
           <ion-icon name="checkmark-outline" *ngIf="name.isUsed"></ion-icon>
         </td>
         <td class="aru-table-cell">
-          <ion-icon class="aru-delete-icon" name="trash-outline"></ion-icon>
+          <button class="btn" (click)="deleteName(nameIndex)">
+            <ion-icon class="aru-delete-icon" name="trash-outline"></ion-icon>
+          </button>
         </td>
       </tr>
     </table>

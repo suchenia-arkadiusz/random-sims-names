@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { IonicModule } from '@ionic/angular';
 import { AddNewNameComponent } from './components/add-new-name/add-new-name.component';
+import { DrawNameComponent } from './components/draw-name/draw-name.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AddNewNameComponent } from './components/add-new-name/add-new-name.comp
     HeaderComponent,
     FooterComponent,
     PopupComponent,
-    AddNewNameComponent
+    AddNewNameComponent,
+    DrawNameComponent
   ],
   imports: [
     BrowserModule,
