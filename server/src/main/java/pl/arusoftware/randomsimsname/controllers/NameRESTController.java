@@ -66,9 +66,15 @@ public class NameRESTController {
 
     @GetMapping("/name")
     @ResponseBody
-    public ResponseEntity<?> getName(@PathParam("name") String name) {
+    public ResponseEntity<?> getName(@PathParam("name") String name,
+                                     @PathParam("gender") String gender) {
         try {
-            Name entry = nameService.getName(name);
+            Name entry;
+            if (null != name && !name.isBlank()) {
+                entry = nameService.getName(name);
+            } else {
+                entry = nameService.getRandomName(gender);
+            }
             NameResponse response = mapNameToResponse(entry);
             return ResponseEntity
                     .ok(response);

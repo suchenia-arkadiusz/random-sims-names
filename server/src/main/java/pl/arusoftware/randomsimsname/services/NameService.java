@@ -45,6 +45,12 @@ public class NameService {
         }
     }
 
+    public Name getRandomName(String gender) {
+        Name name = null;
+
+        return name;
+    }
+
     public Set<Name> getAllNames() {
         return nameDAO.getAllNames();
     }
