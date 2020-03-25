@@ -76,5 +76,5 @@
   height: var(--default-font-size);
   background-size: auto 100%;
   display: inline-block;
-  color: red;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
