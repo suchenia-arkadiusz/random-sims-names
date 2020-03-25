@@ -6,6 +6,7 @@ import pl.arusoftware.randomsimsname.data.exceptions.NameNotFoundException;
 import pl.arusoftware.randomsimsname.data.repositories.NameRepository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -32,6 +33,10 @@ public class NameDAO {
         Set<Name> result = new HashSet<>();
         repository.findAll().forEach(result::add);
         return result;
+    }
+
+    public List<Name> getNamesByGender(Name.Gender gender) {
+        return repository.getAllByGenderAndIsUsedEquals(gender, false);
     }
 
     public void delete(String name) {

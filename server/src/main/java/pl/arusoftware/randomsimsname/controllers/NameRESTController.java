@@ -70,7 +70,7 @@ public class NameRESTController {
                                      @PathParam("gender") String gender) {
         try {
             Name entry;
-            if (null != name && !name.isBlank()) {
+            if (null != name && name.isBlank()) {
                 entry = nameService.getName(name);
             } else {
                 entry = nameService.getRandomName(gender);
