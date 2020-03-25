@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from "rxjs";
   providedIn: 'root'
 })
 export class NameService {
-  private readonly MAIN_URL = 'http://localhost:8081/api/v1';
+  private readonly MAIN_URL = 'http://192.168.8.158:8081/api/v1';
   // private readonly MAIN_URL = '/api/v1';
   private names: BehaviorSubject<Name[]>;
 

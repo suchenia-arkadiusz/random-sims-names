@@ -13,15 +13,15 @@
       <tr class="aru-table-row" *ngFor="let name of names; let nameIndex = index">
         <td class="aru-table-cell">{{name.name}}</td>
         <td class="aru-table-cell">
-          <ion-icon name="man-outline" *ngIf="name.gender === 'MALE'"></ion-icon>
-          <ion-icon name="woman-outline" *ngIf="name.gender === 'FEMALE'"></ion-icon>
+          <span class="man-outline" *ngIf="name.gender === 'MALE'"></span>
+          <span class="woman-outline" *ngIf="name.gender === 'FEMALE'"></span>
         </td>
         <td class="aru-table-cell">
-          <ion-icon name="checkmark-outline" *ngIf="name.isUsed"></ion-icon>
+          <span class="checkmark-outline" *ngIf="name.isUsed"></span>
         </td>
         <td class="aru-table-cell">
           <button class="btn" (click)="deleteName(nameIndex)">
-            <ion-icon class="aru-delete-icon" name="trash-outline"></ion-icon>
+            <span class="aru-delete-icon trash-outline"></span>
           </button>
         </td>
       </tr>

@@ -9,8 +9,8 @@ import { Name } from "../../data/entities/Name";
   styleUrls: ['./draw-name.component.scss']
 })
 export class DrawNameComponent implements OnInit {
-  private name = "";
-  private gender = "";
+  name = "";
+  gender = "";
   private drawnName: Name;
 
   constructor(private nameService: NameService,
