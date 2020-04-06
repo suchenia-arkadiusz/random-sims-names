@@ -82,36 +82,28 @@ public class NameRESTController {
     public ResponseEntity<?> getName(@PathParam("name") String name,
                                      @PathParam("gender") String gender) {
         try {
-            Name entry;
-            if (null != name && name.isBlank()) {
-                entry = nameService.getName(name);
+            if (null != name && !name.isBlank() || null != gender && !gender.isBlank()) {
+                Name entry;
+                if (null != name && !name.isBlank()) {
+                    entry = nameService.getName(name);
+                } else {
+                    entry = nameService.getRandomName(gender);
+                }
+                NameResponse response = mapNameToResponse(entry);
+                return ResponseEntity
+                        .ok(response);
             } else {
-                entry = nameService.getRandomName(gender);
+                List<NameResponse> response = nameService.getAllNames()
+                        .stream()
+                        .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
+                        .collect(Collectors.toList());
+                return ResponseEntity
+                        .ok(response);
             }
-            NameResponse response = mapNameToResponse(entry);
-            return ResponseEntity
-                    .ok(response);
         } catch (NameNotFoundException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(e.getMessage());
-        }
-    }
-
-    @GetMapping("/names")
-    @ResponseBody
-    public ResponseEntity<?> getAllNames() {
-        try {
-            List<NameResponse> response = nameService.getAllNames()
-                    .stream()
-                    .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
-                    .collect(Collectors.toList());
-            return ResponseEntity
-                    .ok(response);
-        } catch (Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error during get all names");
         }
     }
 
