@@ -36,11 +36,15 @@ public class NameRESTController {
         this.nameService = nameService;
     }
 
-    @PostMapping("/name")
+    @PostMapping("/names")
     @ResponseBody
-    public ResponseEntity<?> addName(@RequestBody NameRequest request) {
+    public ResponseEntity<?> addNames(@RequestBody List<NameRequest> request) {
         try {
-            nameService.addName(request.getName(), request.getGender());
+            nameService.addNames(request
+                    .stream()
+                    .map((entry) -> new Name(entry.getName(), Name.Gender.valueOf(entry.getGender()), false))
+                    .collect(Collectors.toList()));
+
             List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
@@ -54,11 +58,12 @@ public class NameRESTController {
         }
     }
 
-    @PutMapping("/name")
+    @PutMapping("/names")
     @ResponseBody
     public ResponseEntity<?> setIsUsedStatus(@RequestBody NameRequest request) {
         try {
             nameService.setIsUsedStatus(request.getName(), request.getIsUsed());
+
             List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
@@ -72,7 +77,7 @@ public class NameRESTController {
         }
     }
 
-    @GetMapping("/name")
+    @GetMapping("/names")
     @ResponseBody
     public ResponseEntity<?> getName(@PathParam("name") String name,
                                      @PathParam("gender") String gender) {
@@ -110,11 +115,12 @@ public class NameRESTController {
         }
     }
 
-    @DeleteMapping("/name")
+    @DeleteMapping("/names")
     @ResponseBody
     public ResponseEntity<?> deleteName(@PathParam("name") String name) {
         try {
             nameService.deleteName(name);
+
             List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
