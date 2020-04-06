@@ -38,11 +38,15 @@ public class NameRESTController {
 
     @PostMapping("/name")
     @ResponseBody
-    public ResponseEntity<String> addName(@RequestBody NameRequest request) {
+    public ResponseEntity<?> addName(@RequestBody NameRequest request) {
         try {
             nameService.addName(request.getName(), request.getGender());
+            List<NameResponse> response = nameService.getAllNames()
+                    .stream()
+                    .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
+                    .collect(Collectors.toList());
             return ResponseEntity
-                    .ok("Name was added");
+                    .ok(response);
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -52,11 +56,15 @@ public class NameRESTController {
 
     @PutMapping("/name")
     @ResponseBody
-    public ResponseEntity<String> setIsUsedStatus(@RequestBody NameRequest request) {
+    public ResponseEntity<?> setIsUsedStatus(@RequestBody NameRequest request) {
         try {
             nameService.setIsUsedStatus(request.getName(), request.getIsUsed());
+            List<NameResponse> response = nameService.getAllNames()
+                    .stream()
+                    .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
+                    .collect(Collectors.toList());
             return ResponseEntity
-                    .ok("Changed name's status");
+                    .ok(response);
         } catch (NameNotFoundException e) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -104,11 +112,15 @@ public class NameRESTController {
 
     @DeleteMapping("/name")
     @ResponseBody
-    public ResponseEntity<String> deleteName(@PathParam("name") String name) {
+    public ResponseEntity<?> deleteName(@PathParam("name") String name) {
         try {
             nameService.deleteName(name);
+            List<NameResponse> response = nameService.getAllNames()
+                    .stream()
+                    .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
+                    .collect(Collectors.toList());
             return ResponseEntity
-                    .ok("Name was successfully deleted");
+                    .ok(response);
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)

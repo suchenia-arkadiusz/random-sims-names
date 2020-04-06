@@ -20,12 +20,10 @@ export class NameService {
   }
 
   addNewName(name: Name) {
-    this.http.post(`${this.MAIN_URL}/name`, name, {responseType: 'text'})
+    this.http.post<Name[]>(`${this.MAIN_URL}/name`, name)
       .subscribe(
         (response) => {
-          let entries = this.names.getValue();
-          entries.push(name);
-          this.names.next(entries);
+          this.names.next(response);
         },
         (error) => console.log(error)
       );
@@ -39,11 +37,10 @@ export class NameService {
     let entries = this.names.getValue();
     let index = entries.indexOf(name);
     if (index > -1) {
-      this.http.delete(`${this.MAIN_URL}/name?name=${name.name}`, {responseType: 'text'})
+      this.http.delete<Name[]>(`${this.MAIN_URL}/name?name=${name.name}`)
         .subscribe(
           (response) => {
-            entries.splice(index, 1);
-            this.names.next(entries);
+            this.names.next(response);
           },
         (error) => console.log(error)
         );
@@ -52,13 +49,10 @@ export class NameService {
 
   setNameAsTaken(name: Name) {
     name.isUsed = true;
-    this.http.put(`${this.MAIN_URL}/name`, name, {responseType: 'text'})
+    this.http.put<Name[]>(`${this.MAIN_URL}/name`, name)
       .subscribe(
         (response) => {
-          let entries = this.names.getValue();
-          let index = entries.indexOf(name);
-          entries[index] = name;
-          this.names.next(entries);
+          this.names.next(response);
         },
         (error) => console.log(error)
       );
