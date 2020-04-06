@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --aru-light-green: #a1c908;
+  --aru-dark-green: #02963e;
+  --aru-blue: #73d3ff;
+  --aru-light-blue: #f2faff;
+  --aru-red: #ff6973;
+
+  --default-font-size: 12pt;
+  --defailt-button-font-size: 10pt;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, sans-serif;
+  font-size: var(--default-font-size);
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: var(--aru-blue) !important;
+  color: black !important;
+}
+
+.add-outline {
+  background-image: url(assets/images/ionicons/add-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
+
+.checkmark-outline {
+  background-image: url(assets/images/ionicons/checkmark-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
+
+.close-outline {
+  background-image: url(assets/images/ionicons/close-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
+
+.man-outline {
+  background-image: url(assets/images/ionicons/man-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
+
+.woman-outline {
+  background-image: url(assets/images/ionicons/woman-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
+
+.shuffle-outline {
+  background-image: url(assets/images/ionicons/shuffle-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
+
+.trash-outline {
+  background-image: url(assets/images/ionicons/trash-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}

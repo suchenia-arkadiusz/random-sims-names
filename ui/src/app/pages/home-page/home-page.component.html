@@ -1,0 +1,62 @@
+<app-header></app-header>
+<app-popup></app-popup>
+<div class="home-page-container">
+  <div class="container-fluid">
+    <h1>Imiona Simów</h1>
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <h2>Imiona żeńskie</h2>
+        <table class="aru-table">
+          <tr class="aru-table-row">
+            <th class="aru-table-header">Imię</th>
+            <th class="aru-table-header">Płeć</th>
+            <th class="aru-table-header">W użyciu</th>
+            <th class="aru-table-header">Skasuj</th>
+          </tr>
+          <tr class="aru-table-row" *ngFor="let name of femaleNames; let nameIndex = index">
+            <td class="aru-table-cell">{{name.name}}</td>
+            <td class="aru-table-cell">
+              <span class="man-outline" *ngIf="name.gender === 'MALE'"></span>
+              <span class="woman-outline" *ngIf="name.gender === 'FEMALE'"></span>
+            </td>
+            <td class="aru-table-cell">
+              <span class="checkmark-outline" *ngIf="name.isUsed"></span>
+            </td>
+            <td class="aru-table-cell">
+              <button class="btn" (click)="deleteFemaleName(nameIndex)">
+                <span class="aru-delete-icon trash-outline"></span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <h2>Imiona męskie</h2>
+        <table class="aru-table">
+          <tr class="aru-table-row">
+            <th class="aru-table-header">Imię</th>
+            <th class="aru-table-header">Płeć</th>
+            <th class="aru-table-header">W użyciu</th>
+            <th class="aru-table-header">Skasuj</th>
+          </tr>
+          <tr class="aru-table-row" *ngFor="let name of maleNames; let nameIndex = index">
+            <td class="aru-table-cell">{{name.name}}</td>
+            <td class="aru-table-cell">
+              <span class="man-outline" *ngIf="name.gender === 'MALE'"></span>
+              <span class="woman-outline" *ngIf="name.gender === 'FEMALE'"></span>
+            </td>
+            <td class="aru-table-cell">
+              <span class="checkmark-outline" *ngIf="name.isUsed"></span>
+            </td>
+            <td class="aru-table-cell">
+              <button class="btn" (click)="deleteMaleName(nameIndex)">
+                <span class="trash-outline"></span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

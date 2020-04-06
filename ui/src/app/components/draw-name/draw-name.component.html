@@ -1,0 +1,16 @@
+<h2>Wylosuj imię</h2>
+<div class="draw-name-row row">
+  <label for="name">Imię: </label>
+  <input id="name" type="text" disabled value="{{name}}"/>
+</div>
+<div class="draw-name-row row">
+  <label for="gender">Płeć: </label>
+  <select id="gender" [(ngModel)]="selectedGender">
+    <option value="MALE">Mężczyzna</option>
+    <option value="FEMALE">Kobieta</option>
+  </select>
+</div>
+<div class="draw-name-row row">
+  <button class="draw-name-button btn btn-success" (click)="selectName()">Wybierz imię</button>
+  <button class="draw-name-button btn btn-primary" (click)="drawName()">Losuj jeszcze raz</button>
+</div>
