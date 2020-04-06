@@ -10,7 +10,7 @@ import { Name } from "../../data/entities/Name";
 })
 export class DrawNameComponent implements OnInit {
   name = "";
-  private gender = "MALE";
+  selectedGender = "MALE";
   private drawnName: Name;
 
   constructor(private nameService: NameService,
@@ -25,14 +25,10 @@ export class DrawNameComponent implements OnInit {
   }
 
   drawName() {
-    this.nameService.getRandomName(this.gender)
+    this.nameService.getRandomName(this.selectedGender)
       .subscribe(data =>  {
         this.drawnName = data;
         this.name = this.drawnName.name;
       });
-  }
-
-  selectGender(gender: string) {
-    this.gender = gender;
   }
 }
