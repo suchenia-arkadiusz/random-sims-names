@@ -8,17 +8,25 @@ import { NameService } from "../../services/name.service";
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  names: Name[] = [];
+  femaleNames: Name[] = [];
+  maleNames: Name[] = [];
 
   constructor(private nameService: NameService) {
   }
 
   ngOnInit(): void {
     this.nameService.getNames()
-      .subscribe((data: Name[]) => this.names = data);
+      .subscribe((data: Name[]) =>  {
+        this.femaleNames = data.filter(element => element.gender === 'FEMALE');
+        this.maleNames = data.filter(element => element.gender === 'MALE');
+      });
   }
 
-  deleteName(index: number) {
-    this.nameService.deleteName(this.names[index]);
+  deleteFemaleName(index: number) {
+    this.nameService.deleteName(this.femaleNames[index]);
+  }
+
+  deleteMaleName(index: number) {
+    this.nameService.deleteName(this.maleNames[index]);
   }
 }
