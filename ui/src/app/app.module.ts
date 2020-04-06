@@ -10,6 +10,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { AddNewNameComponent } from './components/add-new-name/add-new-name.component';
 import { DrawNameComponent } from './components/draw-name/draw-name.component';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

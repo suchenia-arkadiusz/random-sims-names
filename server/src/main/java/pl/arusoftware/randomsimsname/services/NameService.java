@@ -26,6 +26,10 @@ public class NameService {
         nameDAO.save(entry);
     }
 
+    public void addNames(List<Name> names) {
+        nameDAO.saveAll(names);
+    }
+
     public void setIsUsedStatus(String name, boolean isUsed) throws NameNotFoundException {
         try {
             Name entry = nameDAO.getName(name);

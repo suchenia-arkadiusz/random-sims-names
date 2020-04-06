@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NameService } from "../../services/name.service";
 import { Name } from "../../data/entities/Name";
 import { PopupService } from "../../services/popup.service";
@@ -9,8 +9,8 @@ import { PopupService } from "../../services/popup.service";
   styleUrls: ['./add-new-name.component.scss']
 })
 export class AddNewNameComponent implements OnInit {
-  @ViewChild('nameInput') nameInput: ElementRef;
-  private selectedGender: string = 'MALE';
+
+  names: Name[] = [new Name('', 'MALE', false)];
 
   constructor(private nameService: NameService,
               private popupService: PopupService) { }
@@ -18,17 +18,12 @@ export class AddNewNameComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNem() {
-    let name = this.nameInput.nativeElement.value;
-    let entry:Name = new Name();
-    entry.gender = this.selectedGender;
-    entry.name = name;
-    entry.isUsed = false;
-    this.nameService.addNewName(entry);
+  addName() {
+    this.nameService.addNewName(this.names);
     this.popupService.closePopup();
   }
 
-  selectGender(gender: string) {
-    this.selectedGender = gender;
+  addRow() {
+    this.names.push(new Name('', 'MALE', false));
   }
 }

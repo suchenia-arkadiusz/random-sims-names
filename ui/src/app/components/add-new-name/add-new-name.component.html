@@ -1,15 +1,26 @@
 <h2>Dodaj nowe imię</h2>
 <div class="add-new-name-row row">
-  <label for="name">Imię: </label>
-  <input #nameInput id="name" type="text" />
+  <div class="col-12">
+    <table class="aru-table">
+      <tr class="aru-table-row">
+        <th class="aru-table-header">IMIĘ:</th>
+        <th class="aru-table-header">PŁEĆ:</th>
+      </tr>
+      <tr class="aru-table-row" *ngFor="let name of names">
+        <td class="aru-table-cell">
+            <input [(ngModel)]="name.name" type="text" value="{{name.name}}"/>
+        </td>
+        <td class="aru-table-cell">
+          <select [(ngModel)]="name.gender">
+            <option value="MALE">Mężczyzna</option>
+            <option value="FEMALE">Kobieta</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <button class="add-new-name-button btn btn-success" (click)="addRow()">Dodaj wiersz</button>
+  </div>
 </div>
 <div class="add-new-name-row row">
-  <label for="gender">Płeć: </label>
-  <select id="gender" (change)="selectGender($event.target.value)">
-    <option value="MALE">Mężczyzna</option>
-    <option value="FEMALE">Kobieta</option>
-  </select>
-</div>
-<div class="add-new-name-row row">
-  <button class="add-new-name-button btn btn-success" (click)="addNem()">Dodaj imię</button>
+  <button class="add-new-name-button btn btn-success" (click)="addName()">Dodaj imiona</button>
 </div>

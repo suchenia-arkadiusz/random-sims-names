@@ -19,8 +19,8 @@ export class NameService {
       });
   }
 
-  addNewName(name: Name) {
-    this.http.post<Name[]>(`${this.MAIN_URL}/name`, name)
+  addNewName(names: Name[]) {
+    this.http.post<Name[]>(`${this.MAIN_URL}/names`, names)
       .subscribe(
         (response) => {
           this.names.next(response);
@@ -37,7 +37,7 @@ export class NameService {
     let entries = this.names.getValue();
     let index = entries.indexOf(name);
     if (index > -1) {
-      this.http.delete<Name[]>(`${this.MAIN_URL}/name?name=${name.name}`)
+      this.http.delete<Name[]>(`${this.MAIN_URL}/names?name=${name.name}`)
         .subscribe(
           (response) => {
             this.names.next(response);
@@ -49,7 +49,7 @@ export class NameService {
 
   setNameAsTaken(name: Name) {
     name.isUsed = true;
-    this.http.put<Name[]>(`${this.MAIN_URL}/name`, name)
+    this.http.put<Name[]>(`${this.MAIN_URL}/names`, name)
       .subscribe(
         (response) => {
           this.names.next(response);
@@ -59,6 +59,6 @@ export class NameService {
   }
 
   getRandomName(gender: string): Observable<Name> {
-    return this.http.get<Name>(`${this.MAIN_URL}/name?gender=${gender}`);
+    return this.http.get<Name>(`${this.MAIN_URL}/names?gender=${gender}`);
   }
 }

@@ -9,7 +9,6 @@
 
 .aru-table-header {
   border-bottom: 1px solid #dddddd;
-  //min-width: 200px;
   padding: 5px;
   background: var(--aru-blue);
   text-align: center;
@@ -20,10 +19,6 @@
   border-bottom: 1px solid #dddddd;
   text-align: center;
   vertical-align: center;
-}
-
-.aru-delete-icon {
-  color: var(--aru-red);
 }
 
 .aru-table-row:hover {

@@ -36,11 +36,15 @@ public class NameRESTController {
         this.nameService = nameService;
     }
 
-    @PostMapping("/name")
+    @PostMapping("/names")
     @ResponseBody
-    public ResponseEntity<?> addName(@RequestBody NameRequest request) {
+    public ResponseEntity<?> addNames(@RequestBody List<NameRequest> request) {
         try {
-            nameService.addName(request.getName(), request.getGender());
+            nameService.addNames(request
+                    .stream()
+                    .map((entry) -> new Name(entry.getName(), Name.Gender.valueOf(entry.getGender()), false))
+                    .collect(Collectors.toList()));
+
             List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
@@ -54,36 +58,16 @@ public class NameRESTController {
         }
     }
 
-    @PutMapping("/name")
+    @PutMapping("/names")
     @ResponseBody
     public ResponseEntity<?> setIsUsedStatus(@RequestBody NameRequest request) {
         try {
             nameService.setIsUsedStatus(request.getName(), request.getIsUsed());
+
             List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
                     .collect(Collectors.toList());
-            return ResponseEntity
-                    .ok(response);
-        } catch (NameNotFoundException e) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body(e.getMessage());
-        }
-    }
-
-    @GetMapping("/name")
-    @ResponseBody
-    public ResponseEntity<?> getName(@PathParam("name") String name,
-                                     @PathParam("gender") String gender) {
-        try {
-            Name entry;
-            if (null != name && name.isBlank()) {
-                entry = nameService.getName(name);
-            } else {
-                entry = nameService.getRandomName(gender);
-            }
-            NameResponse response = mapNameToResponse(entry);
             return ResponseEntity
                     .ok(response);
         } catch (NameNotFoundException e) {
@@ -95,26 +79,40 @@ public class NameRESTController {
 
     @GetMapping("/names")
     @ResponseBody
-    public ResponseEntity<?> getAllNames() {
+    public ResponseEntity<?> getName(@PathParam("name") String name,
+                                     @PathParam("gender") String gender) {
         try {
-            List<NameResponse> response = nameService.getAllNames()
-                    .stream()
-                    .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
-                    .collect(Collectors.toList());
+            if (null != name && !name.isBlank() || null != gender && !gender.isBlank()) {
+                Name entry;
+                if (null != name && !name.isBlank()) {
+                    entry = nameService.getName(name);
+                } else {
+                    entry = nameService.getRandomName(gender);
+                }
+                NameResponse response = mapNameToResponse(entry);
+                return ResponseEntity
+                        .ok(response);
+            } else {
+                List<NameResponse> response = nameService.getAllNames()
+                        .stream()
+                        .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
+                        .collect(Collectors.toList());
+                return ResponseEntity
+                        .ok(response);
+            }
+        } catch (NameNotFoundException e) {
             return ResponseEntity
-                    .ok(response);
-        } catch (Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error during get all names");
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(e.getMessage());
         }
     }
 
-    @DeleteMapping("/name")
+    @DeleteMapping("/names")
     @ResponseBody
     public ResponseEntity<?> deleteName(@PathParam("name") String name) {
         try {
             nameService.deleteName(name);
+
             List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))

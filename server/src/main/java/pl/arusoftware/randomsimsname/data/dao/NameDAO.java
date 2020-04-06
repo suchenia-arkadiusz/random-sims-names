@@ -19,6 +19,10 @@ public class NameDAO {
         return repository.save(name);
     }
 
+    public List<Name> saveAll(List<Name> names) {
+        return (List<Name>) repository.saveAll(names);
+    }
+
     public Name update(Name name) {
         return repository.save(name);
     }
