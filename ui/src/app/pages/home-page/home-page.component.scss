@@ -4,11 +4,12 @@
 
 .aru-table {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .aru-table-header {
   border-bottom: 1px solid #dddddd;
-  min-width: 200px;
+  //min-width: 200px;
   padding: 5px;
   background: var(--aru-blue);
   text-align: center;
