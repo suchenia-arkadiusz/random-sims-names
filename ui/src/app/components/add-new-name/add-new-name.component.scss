@@ -5,3 +5,26 @@
 .add-new-name-button {
   font-size: var(--defailt-button-font-size);
 }
+
+.aru-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.aru-table-header {
+  border-bottom: 1px solid #dddddd;
+  padding: 5px;
+  background: var(--aru-blue);
+  text-align: center;
+}
+
+.aru-table-cell {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+  text-align: center;
+  vertical-align: center;
+}
+
+.aru-table-row:hover {
+  background-color: var(--aru-light-blue);
+}
