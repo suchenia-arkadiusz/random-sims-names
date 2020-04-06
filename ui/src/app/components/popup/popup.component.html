@@ -1,16 +1,18 @@
 <div class="popup-overlay" *ngIf="isPopupVisible">
-  <div class="popup-container">
-    <div class="aru-close-popup row">
-      <button class="btn" (click)="closePopup()">
-        <span class="close-outline"></span>
-      </button>
-    </div>
-    <div class="row">
-      <div *ngIf="isAddNameSelected">
-        <app-add-new-name></app-add-new-name>
+  <div class="popup-invisible-border">
+    <div class="popup-container">
+      <div class="aru-close-popup row">
+        <button class="btn" (click)="closePopup()">
+          <span class="close-outline"></span>
+        </button>
       </div>
-      <div *ngIf="!isAddNameSelected">
-        <app-draw-name></app-draw-name>
+      <div class="row">
+        <div *ngIf="isAddNameSelected">
+          <app-add-new-name></app-add-new-name>
+        </div>
+        <div *ngIf="!isAddNameSelected">
+          <app-draw-name></app-draw-name>
+        </div>
       </div>
     </div>
   </div>
