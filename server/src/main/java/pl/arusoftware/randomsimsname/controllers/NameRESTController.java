@@ -21,7 +21,7 @@ import pl.arusoftware.randomsimsname.data.exceptions.NameNotFoundException;
 import pl.arusoftware.randomsimsname.services.NameService;
 
 import javax.websocket.server.PathParam;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @CrossOrigin
@@ -89,10 +89,10 @@ public class NameRESTController {
     @ResponseBody
     public ResponseEntity<?> getAllNames() {
         try {
-            Set<NameResponse> response = nameService.getAllNames()
+            List<NameResponse> response = nameService.getAllNames()
                     .stream()
                     .map((entry) -> new NameResponse(entry.getId(), entry.getGender().toString(), entry.getUsed()))
-                    .collect(Collectors.toSet());
+                    .collect(Collectors.toList());
             return ResponseEntity
                     .ok(response);
         } catch (Exception e) {
