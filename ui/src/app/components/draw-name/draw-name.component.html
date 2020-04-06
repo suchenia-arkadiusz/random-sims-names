@@ -5,7 +5,10 @@
 </div>
 <div class="draw-name-row row">
   <label for="gender">Płeć: </label>
-  <input id="gender" type="text" disabled value="{{gender}}"/>
+  <select id="gender" (change)="selectGender($event.target.value)">
+    <option value="MALE">Mężczyzna</option>
+    <option value="FEMALE">Kobieta</option>
+  </select>
 </div>
 <div class="draw-name-row row">
   <button class="draw-name-button btn btn-success" (click)="selectName()">Wybierz imię</button>

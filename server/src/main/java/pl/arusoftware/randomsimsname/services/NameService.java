@@ -7,6 +7,7 @@ import pl.arusoftware.randomsimsname.data.dao.NameDAO;
 import pl.arusoftware.randomsimsname.data.entities.Name;
 import pl.arusoftware.randomsimsname.data.exceptions.NameNotFoundException;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -43,6 +44,12 @@ public class NameService {
             LOGGER.error("Exception during get name: " + e.getMessage());
             throw e;
         }
+    }
+
+    public Name getRandomName(String gender) {
+        List<Name> entries = nameDAO.getNamesByGender(Name.Gender.valueOf(gender));
+        int index = (int) Math.floor(Math.random() * entries.size());
+        return entries.get(index);
     }
 
     public Set<Name> getAllNames() {

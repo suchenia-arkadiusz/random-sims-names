@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from "rxjs";
   providedIn: 'root'
 })
 export class NameService {
-  private readonly MAIN_URL = 'http://192.168.8.158:8081/api/v1';
+  private readonly MAIN_URL = 'http://localhost:8081/api/v1';
   // private readonly MAIN_URL = '/api/v1';
   private names: BehaviorSubject<Name[]>;
 
@@ -62,5 +62,9 @@ export class NameService {
         },
         (error) => console.log(error)
       );
+  }
+
+  getRandomName(gender: string): Observable<Name> {
+    return this.http.get<Name>(`${this.MAIN_URL}/name?gender=${gender}`);
   }
 }
