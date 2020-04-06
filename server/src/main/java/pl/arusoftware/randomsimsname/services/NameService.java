@@ -52,7 +52,7 @@ public class NameService {
         return entries.get(index);
     }
 
-    public Set<Name> getAllNames() {
+    public List<Name> getAllNames() {
         return nameDAO.getAllNames();
     }
 
