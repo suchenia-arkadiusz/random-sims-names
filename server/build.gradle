@@ -32,3 +32,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task buildDocker(type: Exec) {
+    workingDir "${projectDir}/../"
+    commandLine "cd"
+    executable 'docker'
+    args 'build',  '--build-arg', 'version=' + project.version, '-t', 'andom-sims-name:latest',
+            '-t', 'random-sims-name:' + project.version, '.'
+}
