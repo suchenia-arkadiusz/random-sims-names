@@ -83,3 +83,11 @@ body, html {
   display: inline-block;
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
+
+.chevron-back-outline {
+  background-image: url(assets/images/ionicons/chevron-back-outline.svg);
+  width: var(--default-font-size);
+  height: var(--default-font-size);
+  background-size: auto 100%;
+  display: inline-block;
+}
