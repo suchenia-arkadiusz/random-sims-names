@@ -1,12 +1,17 @@
 <div class="header-container">
   <div class="container-fluid">
-    <button class="nav-button btn btn-primary" (click)="showPopup('add-name')">
-      <span class="nav-icon add-outline"></span>
-      <span class="nav-label">Dodaj imię</span>
+    <button class="nav-button btn" routerLink="" routerLinkActive="active">
+      <span class="nav-icon chevron-back-outline"></span>
     </button>
-    <button class="nav-button btn btn-primary" (click)="showPopup('draw-name')">
-      <span class="nav-icon shuffle-outline"></span>
-      <span class="nav-label">Losuj</span>
-    </button>
+    <div class="nav-right">
+      <button class="nav-button btn btn-primary" (click)="showPopup('add-name')">
+        <span class="nav-icon add-outline"></span>
+        <span class="nav-label">Dodaj imię</span>
+      </button>
+      <button class="nav-button btn btn-primary" (click)="showPopup('draw-name')">
+        <span class="nav-icon shuffle-outline"></span>
+        <span class="nav-label">Losuj</span>
+      </button>
+    </div>
   </div>
 </div>
