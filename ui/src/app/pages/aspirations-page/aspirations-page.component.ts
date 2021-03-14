@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AspirationService } from '../../services/aspiration.service';
+import { Aspiration } from '../../data/entities/Aspiration';
 
 @Component({
   selector: 'app-aspirations-page',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aspirations-page.component.scss']
 })
 export class AspirationsPageComponent implements OnInit {
+  aspirations: Aspiration[] = [];
 
-  constructor() { }
+  constructor(private aspirationService: AspirationService) { }
 
   ngOnInit(): void {
+    this.aspirationService.getAspirations()
+      .subscribe((data: Aspiration[]) => {
+        this.aspirations = data;
+      });
   }
 
+  deleteAspiration(index: number) {
+    this.aspirationService.deleteAspiration(this.aspirations[index]);
+  }
 }
