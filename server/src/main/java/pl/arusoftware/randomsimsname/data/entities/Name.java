@@ -9,21 +9,20 @@ import javax.persistence.Table;
 public class Name {
     @Id
     private String id;
-
     private Gender gender;
-
     private Boolean isUsed;
 
-    public static Name createEmptyName() {
-        return new Name("Empty name", Gender.MALE, false);
+    public Name() {
     }
-
-    public Name() {}
 
     public Name(String id, Gender gender, Boolean isUsed) {
         this.id = id;
         this.gender = gender;
         this.isUsed = isUsed;
+    }
+
+    public static Name createEmptyName() {
+        return new Name("Empty name", Gender.MALE, false);
     }
 
     public Boolean getUsed() {

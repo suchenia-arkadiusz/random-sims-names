@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'pl.arusoftware'
-version = '0.0.1'
+version = '0.2.0'
 sourceCompatibility = '11'
 
 configurations {
