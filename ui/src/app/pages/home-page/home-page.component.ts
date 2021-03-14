@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Name } from "../../data/entities/Name";
-import { NameService } from "../../services/name.service";
+import { Name } from '../../data/entities/Name';
+import { NameService } from '../../services/name.service';
 
 @Component({
   selector: 'app-home-page',
