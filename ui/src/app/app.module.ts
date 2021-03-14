@@ -9,8 +9,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { AddNewNameComponent } from './components/add-new-name/add-new-name.component';
 import { DrawNameComponent } from './components/draw-name/draw-name.component';
-import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NamesPageComponent } from './pages/names-page/names-page.component';
+import { AspirationsPageComponent } from './pages/aspirations-page/aspirations-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FormsModule } from "@angular/forms";
     FooterComponent,
     PopupComponent,
     AddNewNameComponent,
-    DrawNameComponent
+    DrawNameComponent,
+    NamesPageComponent,
+    AspirationsPageComponent
   ],
   imports: [
     BrowserModule,
