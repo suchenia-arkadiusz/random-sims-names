@@ -1,16 +1,5 @@
-.home-page-container {
+.names-page-container {
   padding-bottom: 20px;
-  background: linear-gradient(180deg, var(--aru-light-green) 0%, var(--aru-dark-green) 100%);
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.home-page-menu {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .aru-table {
@@ -34,8 +23,4 @@
 
 .aru-table-row:hover {
   background-color: var(--aru-light-blue);
-}
-
-.home-button {
-  margin: 30px 50px;
 }

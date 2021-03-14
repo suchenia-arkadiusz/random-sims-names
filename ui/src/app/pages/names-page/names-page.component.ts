@@ -3,11 +3,11 @@ import { Name } from '../../data/entities/Name';
 import { NameService } from '../../services/name.service';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  selector: 'app-names-page',
+  templateUrl: './names-page.component.html',
+  styleUrls: ['./names-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class NamesPageComponent implements OnInit {
   femaleNames: Name[] = [];
   maleNames: Name[] = [];
 
@@ -29,4 +29,5 @@ export class HomePageComponent implements OnInit {
   deleteMaleName(index: number) {
     this.nameService.deleteName(this.maleNames[index]);
   }
+
 }
