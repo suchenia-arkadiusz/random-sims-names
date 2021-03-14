@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NamesPageComponent } from './pages/names-page/names-page.component';
 import { AspirationsPageComponent } from './pages/aspirations-page/aspirations-page.component';
+import { DrawAspirationComponent } from './components/draw-aspiration/draw-aspiration.component';
+import { AddNewAspirationComponent } from './components/add-new-aspiration/add-new-aspiration.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AspirationsPageComponent } from './pages/aspirations-page/aspirations-p
     AddNewNameComponent,
     DrawNameComponent,
     NamesPageComponent,
-    AspirationsPageComponent
+    AspirationsPageComponent,
+    DrawAspirationComponent,
+    AddNewAspirationComponent
   ],
   imports: [
     BrowserModule,
