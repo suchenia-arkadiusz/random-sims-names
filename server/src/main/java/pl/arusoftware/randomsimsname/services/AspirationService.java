@@ -71,6 +71,15 @@ public class AspirationService {
         return entries.get(index);
     }
 
+    public void deleteAspiration(String name) throws AspirationNotFoundException {
+        try {
+            aspirationDAO.delete(name);
+        } catch (Exception e) {
+            LOGGER.error("Error during delete name: {}", e.getMessage());
+            throw new AspirationNotFoundException("Aspiration \"" + name + "\" not found");
+        }
+    }
+
     public void deleteAspiration(Aspiration aspiration) {
         aspirationDAO.delete(aspiration);
     }
