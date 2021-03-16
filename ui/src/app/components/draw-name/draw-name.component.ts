@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NameService } from "../../services/name.service";
-import { PopupService } from "../../services/popup.service";
-import { Name } from "../../data/entities/Name";
+import { NameService } from '../../services/name.service';
+import { PopupService } from '../../services/popup.service';
+import { Name } from '../../data/entities/Name';
 
 @Component({
   selector: 'app-draw-name',
@@ -9,8 +9,8 @@ import { Name } from "../../data/entities/Name";
   styleUrls: ['./draw-name.component.scss']
 })
 export class DrawNameComponent implements OnInit {
-  name = "";
-  selectedGender = "MALE";
+  name = '';
+  selectedGender = 'MALE';
   private drawnName: Name;
 
   constructor(private nameService: NameService,

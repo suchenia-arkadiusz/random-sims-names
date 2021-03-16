@@ -1,1 +1,22 @@
-<p>draw-aspiration works!</p>
+<h5>Wylosuj aspirację</h5>
+<div class="draw-aspiration-row row">
+  <label for="aspiration">Aspiracja: </label>
+  <input id="aspiration" type="text" disabled value="{{drawnAspiration.name}}">
+</div>
+<div class="draw-aspiration-row row">
+  <div class="draw-aspiration-radio">
+    <input type="radio" id="adult" name="age" value="adult" [(ngModel)]="checkedAge">
+    <label for="adult">Dorosły</label>
+  </div>
+  <div class="draw-aspiration-radio">
+    <input type="radio" id="teenager" name="age" value="teenager" [(ngModel)]="checkedAge">
+    <label for="teenager">Nastolatek</label>
+  </div>
+  <div class="draw-aspiration-radio">
+    <input type="radio" id="child" name="age" value="child" [(ngModel)]="checkedAge">
+    <label for="child">Dziecko</label>
+  </div>
+</div>
+<div class="draw-aspiration-row row">
+  <button class="draw-aspiration-button btn btn-success" (click)="drawAspiration()">Losuj aspirację</button>
+</div>
