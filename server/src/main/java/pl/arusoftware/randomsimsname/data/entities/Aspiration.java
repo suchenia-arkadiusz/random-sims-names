@@ -17,6 +17,7 @@ public class Aspiration {
     private boolean isTeenager;
 
     public Aspiration() {
+        this.category = Category.CREATIVITY;
     }
 
     public Aspiration(String id, String description, Category category, String bonus, String dlcName, boolean isChild, boolean isTeenager) {

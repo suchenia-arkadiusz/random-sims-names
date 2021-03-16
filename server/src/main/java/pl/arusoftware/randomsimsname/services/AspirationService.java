@@ -55,6 +55,11 @@ public class AspirationService {
 
     public Aspiration getRandomAspiration() {
         List<Aspiration> entries = aspirationDAO.getAllAspirations();
+        List<Aspiration> childEntries = aspirationDAO.getAllForChild();
+        entries.removeAll(childEntries);
+        if (entries.isEmpty()) {
+            return new Aspiration();
+        }
         int index = RAND.nextInt(entries.size());
         return entries.get(index);
     }
