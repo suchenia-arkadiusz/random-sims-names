@@ -15,7 +15,7 @@ export class AspirationService {
     this.aspirations = new BehaviorSubject([]);
     this.http.get<Aspiration[]>(this.MAIN_URL)
       .subscribe((data: Aspiration[]) => {
-        this.aspirations.next(data);
+        this.aspirations.next(data.map(element => this.translateCategoryToPolish(element)));
       });
   }
 
@@ -51,5 +51,56 @@ export class AspirationService {
 
   getAspirationForAdult(): Observable<Aspiration> {
     return this.http.get<Aspiration>(`${this.MAIN_URL}/random`);
+  }
+
+  private translateCategoryToPolish(aspiration: Aspiration) {
+    const translatedAspiration = Object.assign({}, aspiration);
+    switch (aspiration.category) {
+      case 'DEVIATION':
+        translatedAspiration.category = 'DEWIACJA';
+        return translatedAspiration;
+      case 'FORTUNE':
+        translatedAspiration.category = 'FORTUNA';
+        return translatedAspiration;
+      case 'FOOD':
+        translatedAspiration.category = 'JEDZENIE';
+        return translatedAspiration;
+      case 'CREATIVITY':
+        translatedAspiration.category = 'KREATYWNOŚĆ';
+        return translatedAspiration;
+      case 'LOCALIZATION':
+        translatedAspiration.category = 'LOKALIZACJA';
+        return translatedAspiration;
+      case 'LOVE':
+        translatedAspiration.category = 'MIŁOŚĆ';
+        return translatedAspiration;
+      case 'NATURE':
+        translatedAspiration.category = 'NATURA';
+        return translatedAspiration;
+      case 'POPULARITY':
+        translatedAspiration.category = 'POPULARNOŚĆ';
+        return translatedAspiration;
+      case 'FAMILY':
+        translatedAspiration.category = 'RODZINA';
+        return translatedAspiration;
+      case 'SPORT':
+        translatedAspiration.category = 'SPORTOWE';
+        return translatedAspiration;
+      case 'KNOWLEDGE':
+        translatedAspiration.category = 'WIEDZA';
+        return translatedAspiration;
+      case 'ANIMAL':
+        translatedAspiration.category = 'ZWIERZĘ';
+        return translatedAspiration;
+      case 'MOTORIC':
+        translatedAspiration.category = 'MOTORYCZNE';
+        return translatedAspiration;
+      case 'SOCIAL':
+        translatedAspiration.category = 'SPOŁECZNE';
+        return translatedAspiration;
+      case 'MENTAL':
+        translatedAspiration.category = 'UMYSŁOWE';
+        return translatedAspiration;
+    }
   }
 }
