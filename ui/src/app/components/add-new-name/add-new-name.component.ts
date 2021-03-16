@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NameService } from "../../services/name.service";
-import { Name } from "../../data/entities/Name";
-import { PopupService } from "../../services/popup.service";
+import { NameService } from '../../services/name.service';
+import { Name } from '../../data/entities/Name';
+import { PopupService } from '../../services/popup.service';
 
 @Component({
   selector: 'app-add-new-name',

@@ -7,21 +7,17 @@
       <div *ngIf="pageName === '/names'">
         <button class="nav-button btn btn-primary" (click)="showPopup('add-name')">
           <span class="nav-icon add-outline"></span>
-          <span class="nav-label">Dodaj imię</span>
         </button>
         <button class="nav-button btn btn-primary" (click)="showPopup('draw-name')">
           <span class="nav-icon shuffle-outline"></span>
-          <span class="nav-label">Losuj</span>
         </button>
       </div>
       <div *ngIf="pageName === '/aspirations'">
         <button class="nav-button btn btn-primary" (click)="showPopup('add-aspiration')">
           <span class="nav-icon add-outline"></span>
-          <span class="nav-label">Dodaj aspirację</span>
         </button>
         <button class="nav-button btn btn-primary" (click)="showPopup('draw-aspiration')">
           <span class="nav-icon shuffle-outline"></span>
-          <span class="nav-label">Losuj</span>
         </button>
       </div>
     </div>
