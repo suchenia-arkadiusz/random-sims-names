@@ -6,12 +6,19 @@
           <span class="close-outline"></span>
         </button>
       </div>
-      <div class="row">
+      <div class="popup-divider"></div>
+      <div class="row aru-scrollable">
         <div *ngIf="isAddNameSelected">
           <app-add-new-name></app-add-new-name>
         </div>
-        <div *ngIf="!isAddNameSelected">
+        <div *ngIf="isDrawNameSelected">
           <app-draw-name></app-draw-name>
+        </div>
+        <div *ngIf="isAddAspirationSelected">
+          <app-add-new-aspiration></app-add-new-aspiration>
+        </div>
+        <div *ngIf="isDrawAspirationSelected">
+          <app-draw-aspiration></app-draw-aspiration>
         </div>
       </div>
     </div>

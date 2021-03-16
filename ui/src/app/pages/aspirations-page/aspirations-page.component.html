@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-popup></app-popup>
+<div class="aspirations-page-container">
+  <div class="container-fluid">
+    <h1>Aspiracje</h1>
+    <div class="row aru-scrollable">
+      <div class="col">
+        <table class="aru-table">
+          <tr class="aru-table-row">
+            <th class="aru-table-header">Nazwa</th>
+            <th class="aru-table-header">Opis</th>
+            <th class="aru-table-header">Kategoria</th>
+            <th class="aru-table-header">Bonusowa cecha</th>
+            <th class="aru-table-header">Pakiet</th>
+            <th class="aru-table-header">Dla dziecka</th>
+            <th class="aru-table-header">Dla nastolatka</th>
+            <th class="aru-table-header">Skasuj</th>
+          </tr>
+          <tr class="aru-table-row" *ngFor="let aspiration of aspirations; let aspirationIndex = index">
+            <td class="aru-table-cell">{{aspiration.name}}</td>
+            <td class="aru-table-cell">{{aspiration.description}}</td>
+            <td class="aru-table-cell">{{aspiration.category}}</td>
+            <td class="aru-table-cell">{{aspiration.bonus}}</td>
+            <td class="aru-table-cell">{{aspiration.dlcName}}</td>
+            <td class="aru-table-cell">
+              <span class="checkmark-outline" *ngIf="aspiration.isChild"></span>
+            </td>
+            <td class="aru-table-cell">
+              <span class="checkmark-outline" *ngIf="aspiration.isTeenager"></span>
+            </td>
+            <td class="aru-table-cell">
+              <button class="btn" (click)="deleteAspiration(aspirationIndex)">
+                <span class="trash-outline"></span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

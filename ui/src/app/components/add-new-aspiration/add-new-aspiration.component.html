@@ -1,0 +1,59 @@
+<h5>Dodaj nową aspirację</h5>
+<div class="add-new-aspiration-row row">
+  <div class="col-12">
+    <table class="aru-table">
+      <tr class="aru-table-row">
+        <th class="aru-table-header">Nazwa</th>
+        <th class="aru-table-header">Opis</th>
+        <th class="aru-table-header">Kategoria</th>
+        <th class="aru-table-header">Bonusowa cecha</th>
+        <th class="aru-table-header">Pakiet</th>
+        <th class="aru-table-header">Dla dziecka</th>
+        <th class="aru-table-header">Dla nastolatka</th>
+      </tr>
+      <tr class="aru-table-row" *ngFor="let aspiration of aspirations">
+        <td class="aru-table-cell">
+          <input [(ngModel)]="aspiration.name" type="text" value="{{aspiration.name}}"/>
+        </td>
+        <td class="aru-table-cell">
+          <input [(ngModel)]="aspiration.description" type="text" value="{{aspiration.description}}"/>
+        </td>
+        <td class="aru-table-cell">
+          <select [(ngModel)]="aspiration.category">
+            <option value="DEVIATION">DEWIACJA</option>
+            <option value="FORTUNE">FORTUNA</option>
+            <option value="FOOD">JEDZENIE</option>
+            <option value="CREATIVITY">KREATYWNOŚĆ</option>
+            <option value="LOCALIZATION">LOKALIZACJA</option>
+            <option value="LOVE">MIŁOŚĆ</option>
+            <option value="MOTORIC">MOTORYCZNE</option>
+            <option value="NATURE">NATURA</option>
+            <option value="POPULARITY">POPULARNOŚĆ</option>
+            <option value="FAMILY">RODZINA</option>
+            <option value="SOCIAL">SPOŁECZNE</option>
+            <option value="SPORT">SPORTOWE</option>
+            <option value="MENTAL">UMYSŁOWE</option>
+            <option value="KNOWLEDGE">WIEDZA</option>
+            <option value="ANIMAL">ZWIERZĘ</option>
+          </select>
+        </td>
+        <td class="aru-table-cell">
+          <input [(ngModel)]="aspiration.bonus" type="text" value="{{aspiration.bonus}}"/>
+        </td>
+        <td class="aru-table-cell">
+          <input [(ngModel)]="aspiration.dlcName" type="text" value="{{aspiration.dlcName}}"/>
+        </td>
+        <td class="aru-table-cell">
+          <input [(ngModel)]="aspiration.isChild" type="checkbox" value="{{aspiration.isChild}}"/>
+        </td>
+        <td class="aru-table-cell">
+          <input [(ngModel)]="aspiration.isTeenager" type="checkbox" value="{{aspiration.isTeenager}}"/>
+        </td>
+      </tr>
+    </table>
+    <button class="add-new-aspiration-button btn btn-success" (click)="addRow()">Dodaj wiersz</button>
+  </div>
+</div>
+<div class="add-new-aspiration-row row">
+  <button class="add-new-aspiration-button btn btn-success" (click)="addAspirations()">Dodaj aspiracje</button>
+</div>
