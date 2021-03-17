@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AspirationService {
-  private readonly MAIN_URL = 'http://localhost:8080/api/v1/aspirations';
-  // private readonly MAIN_URL = '/api/v1';                             // use this address for production
+  // private readonly MAIN_URL = 'http://localhost:8080/api/v1/aspirations';
+  private readonly MAIN_URL = '/api/v1/aspirations';                             // use this address for production
   private aspirations: BehaviorSubject<Aspiration[]>;
 
   constructor(private http: HttpClient) {
